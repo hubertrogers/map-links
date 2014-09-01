@@ -1,6 +1,9 @@
 @import "jquery.mCustomScrollbar.css";
 /*// @import url("http://polymaps.org/style.css");*/
 
+.leftHalf{ width: 80%; float: left}
+.rightHalf{ width: 20%; float: left }
+
 html, body {
     height: 100%;
     background: #E6E6E6;
