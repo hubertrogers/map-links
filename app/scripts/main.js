@@ -1,8 +1,17 @@
+$(window).resize(function() {
+    $('#map').height($(window).height() - 100);
+    $('#sidebar').height($(window).height() - 100);
+    $('#table').height($(window).height() - 100);
+});
+
+$(window).trigger('resize');
+
+
 var po = org.polymaps;
 // Create the map object, add it to #map…
 var map = po.map()
     .container(d3.select("#map")
-        .append("svg:svg")
+        .append("svg")
         .node())
     .zoom(2)
     .center({
@@ -118,8 +127,6 @@ function hideLinks(transitionTime, delayShort, delayLong) {
     if (typeof delayLong == 'undefined') {
         delayLong = 10;
     }
-    $('#table')
-        .mCustomScrollbar("destroy");
 
 
     var destinations = d3.select('#map svg')
@@ -226,7 +233,6 @@ function pathGrow(d, i, pathClass, transitionTime) {
         .transition()
         .duration(transitionTime / 2)
         .style("stroke-width", function(d) {
-            console.log(d);
             return (rScale.func(d) + 4)
         })
         .style("stroke", "#FFCA1B")
@@ -238,7 +244,6 @@ function pathShrink(d, i, pathClass, transitionTime) {
         .transition()
         .duration(transitionTime / 2)
         .style("stroke-width", function(d) {
-            console.log(d);
             return rScale.func(d)
         })
         .style("stroke", function(d) {
@@ -468,10 +473,7 @@ function showAllTransfers(data, transitionTime) {
     d3.select('div#table')
         .datum(tableData)
         .call(tableFunc)
-        // $('#table')
-        //   .mCustomScrollbar("destroy");
-    $('#table')
-        .mCustomScrollbar();
+
     //////////////////////
     var table = d3.select("div#table")
     table.selectAll("tbody tr")
@@ -1089,10 +1091,7 @@ function showTransfers(data, transitionTime) {
         d3.select('div#table')
             .datum(tableData)
             .call(tableFunc)
-            // $('#table')
-            //   .mCustomScrollbar("destroy");
-        $('#table')
-            .mCustomScrollbar();
+
         //////////////////////
         var table = d3.select("div#table")
         table.selectAll("tbody tr")
@@ -1323,10 +1322,6 @@ function showTransfers(data, transitionTime) {
         d3.select('div#table')
             .datum(tableData)
             .call(tableFunc)
-            // $('#table')
-            //    .mCustomScrollbar("destroy");
-        $('#table')
-            .mCustomScrollbar();
 
         var table = d3.select("div#table")
         table.selectAll("tbody tr")
